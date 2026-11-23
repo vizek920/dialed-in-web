@@ -1,0 +1,49 @@
+/* ===== Dialed In — design tokens (الألوان والخطوط والمسافات) ===== */
+:root {
+  /* الخلفية الليلية */
+  --night-900: #060e20;
+  --night-700: #0c1d41;
+  --night-500: #17386b;
+  --mountain-1: #10264f;
+  --mountain-2: #081329;
+  --mountain-3: #0f2347;
+
+  /* النص */
+  --text: #eaf4ff;
+  --text-soft: #bfd9f5;
+  --text-faint: #8fb4dc;
+
+  /* الألوان المميزة */
+  --ice: #8fd3ff;
+  --ice-light: #bde8ff;
+  --ice-deep: #68c0f4;
+  --red: #e5484d;
+  --red-deep: #c73840;
+  --blue: #3b6bff;
+  --gold: #ffd166;
+  --teal: #6fc7c0;
+  --timer-a: #ffa94d;
+  --timer-b: #f2682a;
+
+  /* الزجاج */
+  --glass: rgba(14, 32, 70, 0.62);
+  --glass-light: rgba(255, 255, 255, 0.09);
+  --glass-border: rgba(190, 225, 255, 0.28);
+  --glass-border-strong: rgba(190, 225, 255, 0.5);
+
+  /* الخطوط */
+  --font-body: 'Cairo', system-ui, sans-serif;
+  --font-display: 'Lalezar', 'Cairo', sans-serif;
+
+  /* الزوايا والظلال */
+  --radius-card: 22px;
+  --radius-pill: 999px;
+  --shadow-card: 0 14px 34px rgba(0, 0, 0, 0.28);
+  --shadow-btn: 0 12px 30px rgba(104, 192, 244, 0.45);
+
+  /* طبقات العمق */
+  --z-bg: 0;
+  --z-mountains: 2;
+  --z-content: 3;
+  --z-modal: 50;
+}
