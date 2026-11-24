@@ -1,0 +1,125 @@
+/* ===== قرص المقياس ===== */
+.dial {
+  display: block;
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  margin: 14px auto 0;
+  direction: ltr; /* كي تكون نقطة بداية النص يسارًا مهما كانت لغة الصفحة */
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  overflow: visible;
+}
+.dial--active {
+  cursor: crosshair;
+}
+.dial:focus:not(:focus-visible) {
+  outline: none;
+}
+.dial:focus-visible {
+  outline: 3px solid var(--ice);
+  outline-offset: 6px;
+  border-radius: 24px;
+}
+
+.dial__marker {
+  transition: transform 0.09s linear;
+}
+.dial__marker--mine {
+  transition: none; /* مؤشري يتبع إصبعي فورًا */
+  filter: drop-shadow(0 0 10px rgba(143, 211, 255, 0.9));
+}
+.dial__name {
+  font-family: var(--font-body);
+  font-size: 17px;
+  font-weight: 800;
+  fill: #fff;
+  stroke: #0e2046;
+  stroke-width: 4px;
+  paint-order: stroke;
+}
+.dial__edge-label text {
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 800;
+}
+.dial__band-num {
+  font-family: var(--font-body);
+  font-size: 34px;
+  font-weight: 900;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+.dial__gain-text {
+  font-family: var(--font-body);
+  font-size: 24px;
+  font-weight: 900;
+}
+
+/* حركات الكشف */
+.dial__band {
+  animation: band-in 0.6s ease both;
+}
+.dial__fade {
+  animation: fade-in 0.5s ease both;
+}
+.dial__needle {
+  transform-origin: 400px 430px;
+  animation: swing 1.6s cubic-bezier(0.2, 0.9, 0.2, 1) both;
+}
+.dial__drop {
+  animation: marker-drop 0.7s cubic-bezier(0.3, 1.4, 0.5, 1) both;
+}
+.dial__gain {
+  animation: gain-rise 0.8s ease both;
+}
+
+@keyframes band-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes swing {
+  from {
+    transform: rotate(-80deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  to {
+    transform: rotate(0);
+  }
+}
+@keyframes marker-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-46px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes gain-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
