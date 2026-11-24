@@ -8,6 +8,10 @@ import './styles/base.css';
 import './styles/animations.css';
 import './styles/backdrop.css';
 import './styles/home.css';
+import './styles/join.css';
+import './styles/lobby.css';
+import './styles/dial.css';
+import './styles/room.css';
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
