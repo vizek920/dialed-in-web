@@ -114,3 +114,101 @@ button {
   color: transparent;
   filter: drop-shadow(0 6px 22px rgba(106, 180, 255, 0.45));
 }
+
+/* ----- حقول الإدخال ----- */
+.input {
+  width: 100%;
+  padding: 13px 16px;
+  border-radius: 14px;
+  border: 1.5px solid var(--glass-border);
+  background: rgba(8, 20, 48, 0.55);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 700;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.input::placeholder {
+  color: var(--text-faint);
+  font-weight: 600;
+}
+.input:focus {
+  outline: none;
+  border-color: var(--ice);
+  box-shadow: 0 0 0 4px rgba(143, 211, 255, 0.2);
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  flex: 1 1 200px;
+}
+.field label {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text-soft);
+}
+
+.btn--block {
+  width: 100%;
+}
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  filter: none;
+}
+
+.form-error {
+  padding: 11px 14px;
+  border-radius: 12px;
+  background: rgba(229, 72, 77, 0.18);
+  border: 1px solid rgba(229, 72, 77, 0.5);
+  color: #ffd2d4;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--glass-border);
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text);
+}
+.pill--btn {
+  cursor: pointer;
+  font-family: inherit;
+}
+.pill--gold {
+  background: rgba(255, 209, 102, 0.16);
+  border-color: rgba(255, 209, 102, 0.55);
+  color: var(--gold);
+}
+.pill--green {
+  background: rgba(124, 242, 176, 0.14);
+  border-color: rgba(124, 242, 176, 0.5);
+  color: #9af5c2;
+}
+.pill--warn {
+  background: rgba(255, 169, 77, 0.16);
+  border-color: rgba(255, 169, 77, 0.55);
+  color: var(--timer-a);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
