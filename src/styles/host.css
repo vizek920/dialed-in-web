@@ -1,0 +1,417 @@
+/* ===== واجهة المضيف ===== */
+
+/* أزرار ثانوية صغيرة */
+.mini {
+  padding: 4px 11px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(190, 225, 255, 0.4);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.2s, opacity 0.2s;
+}
+.mini:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.18);
+}
+.mini:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.mini--danger {
+  border-color: rgba(240, 100, 106, 0.6);
+  color: #ffb4b6;
+}
+.btn--accent {
+  border: none;
+  background: linear-gradient(180deg, #ffe08f, #ffc04d);
+  color: #3a2800;
+  font-weight: 900;
+}
+.btn--danger {
+  border-color: rgba(240, 100, 106, 0.6);
+  color: #ffb4b6;
+}
+.linkbtn {
+  align-self: flex-start;
+  padding: 4px 0;
+  border: none;
+  background: none;
+  color: var(--ice);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+.pill--host {
+  background: rgba(255, 209, 102, 0.16);
+  border-color: rgba(255, 209, 102, 0.55);
+  color: var(--gold);
+}
+.field--wide {
+  flex-basis: 100%;
+}
+
+/* ----- دخول المضيف ----- */
+.hostlogin__form,
+.hostlogin__in {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.hostlogin__hello {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 800;
+}
+.hostlogin__hello b {
+  color: var(--gold);
+}
+.hostlogin__hint {
+  margin: 0;
+  text-align: center;
+  color: var(--text-faint);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* ----- نموذج إنشاء الغرفة ----- */
+.hostform {
+  width: 100%;
+  max-width: 820px;
+  margin: 6px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: rise-in 0.6s ease both;
+}
+.hostform__head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.hostform__head > div {
+  flex: 1;
+  min-width: 200px;
+}
+.hostform__card {
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.hostform__row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.hostform__hint {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 14px;
+  font-weight: 700;
+}
+.hostform__submit {
+  font-size: 22px;
+  padding-block: 16px;
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 6px;
+  border-radius: 14px;
+  border: 1.5px solid var(--glass-border);
+  background: rgba(8, 20, 48, 0.55);
+}
+.stepper__btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: none;
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--text);
+  font-size: 26px;
+  font-weight: 900;
+  line-height: 1;
+  cursor: pointer;
+}
+.stepper__btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.stepper__val {
+  font-family: var(--font-display);
+  font-size: 30px;
+  min-width: 44px;
+  text-align: center;
+}
+
+.seg {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.seg__opt {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  border: 2px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  font-family: inherit;
+  text-align: start;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+.seg__opt b {
+  font-size: 18px;
+}
+.seg__opt span {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-soft);
+}
+.seg__opt--on {
+  border-color: var(--ice);
+  background: rgba(143, 211, 255, 0.16);
+}
+
+/* ----- الأسئلة ----- */
+.qm {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.qm__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.qm__title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 900;
+}
+.qm__tools {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.qm__warn {
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(255, 169, 77, 0.14);
+  border: 1px solid rgba(255, 169, 77, 0.45);
+  color: var(--timer-a);
+  font-size: 14px;
+  font-weight: 700;
+}
+.qm__empty {
+  margin: 0;
+  color: var(--text-soft);
+  font-weight: 700;
+}
+.qm__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.qitem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 2px solid transparent;
+  flex-wrap: wrap;
+}
+.qitem--now {
+  border-color: var(--gold);
+  background: rgba(255, 209, 102, 0.12);
+}
+.qitem--played {
+  opacity: 0.6;
+}
+.qitem__num {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(143, 211, 255, 0.2);
+  font-weight: 900;
+}
+.qitem__body {
+  flex: 1;
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+}
+.qitem__name {
+  font-size: 17px;
+  overflow-wrap: anywhere;
+}
+.qitem__meta {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-soft);
+}
+.qitem__state {
+  padding: 2px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  font-weight: 900;
+}
+.qitem__state--now {
+  background: var(--gold);
+  color: #2a2000;
+}
+.qitem__state--played {
+  background: rgba(255, 255, 255, 0.14);
+}
+.qitem__actions {
+  display: flex;
+  gap: 6px;
+}
+
+.qform {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-color: var(--glass-border-strong);
+}
+.qform__fields,
+.qform__adv {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.qform__target {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.qform__target label {
+  font-weight: 800;
+  color: var(--text-soft);
+}
+.qform__target b {
+  color: var(--gold);
+}
+.qform__target input[type='range'] {
+  width: 100%;
+  accent-color: var(--gold);
+  height: 28px;
+}
+.qform__ends {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text-faint);
+}
+.qform__preview .dial {
+  max-width: 440px;
+  margin-top: 0;
+}
+.qform__note {
+  margin: 4px 0 0;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-faint);
+}
+.qform__points {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+.qform__points .input {
+  padding-inline: 6px;
+  text-align: center;
+}
+.qform__actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* ----- غرفة المضيف ----- */
+.team .prow {
+  flex-wrap: wrap;
+}
+.prow__actions {
+  flex-basis: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.hostbar {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px;
+}
+.hostq {
+  width: 100%;
+  max-width: 900px;
+  padding: 20px 22px;
+}
+.clue__secret {
+  color: var(--gold);
+  font-weight: 800;
+}
+.actions--tight {
+  margin-top: 0;
+}
+.chat__mute {
+  padding: 0 8px;
+  border: none;
+  background: none;
+  color: var(--text-faint);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.chat__mute:hover {
+  color: #ffb4b6;
+}
+.dial__ghost {
+  pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  .hostform__card,
+  .hostq {
+    padding: 16px;
+  }
+  .qform__points {
+    gap: 5px;
+  }
+  .seg {
+    grid-template-columns: 1fr;
+  }
+}
