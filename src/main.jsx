@@ -12,6 +12,8 @@ import './styles/join.css';
 import './styles/lobby.css';
 import './styles/dial.css';
 import './styles/room.css';
+import './styles/host.css';
+import './styles/admin.css';
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
