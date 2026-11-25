@@ -4,8 +4,10 @@ import { errorText } from '../lib/errors.js';
 
 const NAME_COLOR = { red: '#FF8F94', blue: '#7FA6FF' };
 
-// دردشة الغرفة والفريق. canTeam=false للمشاهد بلا فريق (المضيف)
-export default function Chat({ messages, onSend, canTeam = true, meId }) {
+// دردشة الغرفة والفريق.
+// teamMode: 'send' للاعب، و'read' للمضيف (يقرأ دردشة الفرق ولا يكتب فيها)
+// onMute(playerId, muted) + mutedIds: لإظهار زر كتم بجانب رسائل اللاعبين (للمضيف)
+export default function Chat({ messages, onSend, canTeam = true, teamMode = 'send', meId, onMute, mutedIds = [] }) {
   const [tab, setTab] = useState('room');
   const [text, setText] = useState('');
   const [error, setError] = useState('');
@@ -20,10 +22,12 @@ export default function Chat({ messages, onSend, canTeam = true, meId }) {
     if (el) el.scrollTop = el.scrollHeight;
   }, [shown.length, tab]);
 
+  const readOnly = tab === 'team' && teamMode === 'read';
+
   const submit = async (e) => {
     e.preventDefault();
     const value = text.trim();
-    if (!value || sending) return;
+    if (!value || sending || readOnly) return;
     setSending(true);
     const res = await onSend(tab, value);
     setSending(false);
@@ -72,6 +76,15 @@ export default function Chat({ messages, onSend, canTeam = true, meId }) {
               {m.from.id === meId ? ' (أنت)' : ''}
             </b>
             <span className="chat__bubble">{m.text}</span>
+            {onMute && !m.from.isHost && (
+              <button
+                type="button"
+                className="chat__mute"
+                onClick={() => onMute(m.from.id, !mutedIds.includes(m.from.id))}
+              >
+                {mutedIds.includes(m.from.id) ? 'إلغاء الكتم' : 'كتم'}
+              </button>
+            )}
           </div>
         ))}
       </div>
@@ -91,10 +104,11 @@ export default function Chat({ messages, onSend, canTeam = true, meId }) {
           value={text}
           onChange={(e) => setText(e.target.value)}
           maxLength={200}
-          placeholder={tab === 'team' ? 'رسالة لفريقك فقط...' : 'اكتب رسالة...'}
+          disabled={readOnly}
+          placeholder={readOnly ? 'دردشة الفريق للقراءة فقط' : tab === 'team' ? 'رسالة لفريقك فقط...' : 'اكتب رسالة...'}
           autoComplete="off"
         />
-        <button type="submit" className="chat__send" aria-label="إرسال" disabled={sending || !text.trim()}>
+        <button type="submit" className="chat__send" aria-label="إرسال" disabled={sending || readOnly || !text.trim()}>
           <SendIcon />
         </button>
       </form>

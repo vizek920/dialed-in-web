@@ -4,7 +4,7 @@ const TEAM_LABEL = { red: 'الفريق الأحمر', blue: 'الفريق ال�
 
 // لوحة فريق: المجموع، واللاعبون مع نقاطهم، ومن يلعب الآن
 // gains: { [playerId]: { total, bonus } } عند كشف الجولة
-export default function TeamPanel({ team, score, players, activeId, meId, gains, gain }) {
+export default function TeamPanel({ team, score, players, activeId, meId, gains, gain, renderActions }) {
   return (
     <section className={`team team--${team}`} aria-label={TEAM_LABEL[team]}>
       <div className="team__tag">{TEAM_LABEL[team]}</div>
@@ -35,6 +35,7 @@ export default function TeamPanel({ team, score, players, activeId, meId, gains,
                 </div>
               </div>
               {g ? <span dir="ltr" className={`prow__gain${g.bonus ? ' prow__gain--bonus' : ''}`}>+{g.total}</span> : null}
+              {renderActions ? <div className="prow__actions">{renderActions(p)}</div> : null}
             </li>
           );
         })}

@@ -23,8 +23,9 @@ const LOCKED_COLOR = '#7CF2B0';
  * markers: [{ id, name, avatar, team, pos, locked, isMe, gain, bonus }]
  * interactive: يسمح للاعب (الدور الحالي) بالسحب والضغط ولوحة المفاتيح
  * reveal: يعرض النطاقات والهدف والنقاط (يتطلب question.target)
+ * ghostTarget: للمضيف فقط، يلمّح للهدف المخفي (نطاق ذهبي خافت وخط متقطع) دون كشفه للاعبين
  */
-export default function Dial({ question, markers, interactive = false, reveal = false, onMove, myPos }) {
+export default function Dial({ question, markers, interactive = false, reveal = false, onMove, myPos, ghostTarget }) {
   const svgRef = useRef(null);
   const dragging = useRef(false);
 
@@ -87,6 +88,21 @@ export default function Dial({ question, markers, interactive = false, reveal = 
 
       <path d={`M${CX - R_RIM} ${CY}A${R_RIM} ${R_RIM} 0 0 1 ${CX + R_RIM} ${CY}Z`} fill="url(#dial-ice)" />
       <path d={`M${CX - R_RIM} ${CY}A${R_RIM} ${R_RIM} 0 0 1 ${CX + R_RIM} ${CY}Z`} fill="url(#dial-frost)" />
+      {typeof ghostTarget === 'number' && !showReveal && (
+        <g className="dial__ghost" pointerEvents="none">
+          <path d={bandPath(ghostTarget - w / 2, ghostTarget + w / 2)} fill="#FFD166" fillOpacity=".35" />
+          <line
+            x1={pointAt(ghostTarget, 100).x}
+            y1={pointAt(ghostTarget, 100).y}
+            x2={pointAt(ghostTarget, 346).x}
+            y2={pointAt(ghostTarget, 346).y}
+            stroke="#FFE7A3"
+            strokeWidth="4"
+            strokeDasharray="10 9"
+            strokeLinecap="round"
+          />
+        </g>
+      )}
       <path d="M150 430A250 250 0 0 1 650 430" fill="none" stroke="#FFF" strokeOpacity=".16" strokeWidth="3" />
       <path d="M230 430A170 170 0 0 1 570 430" fill="none" stroke="#FFF" strokeOpacity=".14" strokeWidth="3" />
 
